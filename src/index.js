@@ -1,3 +1,2 @@
 import "./css/style.css";
-
-alert("Environment Ready");
+import "./css/reset.css";
