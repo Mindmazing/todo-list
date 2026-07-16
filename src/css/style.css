@@ -17,28 +17,3 @@
   font-style: normal;
   font-display: swap;
 }
-
-:root {
-  ---primary-bg-color: #f3f3f3;
-  --secondary-bg-color: #e9dcbe;
-  --accent-color: #8e8b82;
-  --text-color: #343434;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lato", sans-serif;
-}
-
-body {
-  height: 100vh;
-  font-family: "Roboto", sans-serif;
-  color: var(--text-color);
-  background-color: var(---primary-bg-color);
-
-  /* Display Options */
-}
