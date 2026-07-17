@@ -54,7 +54,6 @@ h2,
 h3,
 h4 {
   font-family: "Inter", sans-serif;
-  font-weight: 300;
 }
 
 .container {
@@ -85,7 +84,6 @@ h4 {
 }
 
 .sidebar > h1 > span {
-  font-weight: bold;
   color: var(--accent-color);
 }
 
@@ -198,12 +196,18 @@ h4 {
 }
 
 /* project-view */
+.main_project-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .view-header {
   display: flex;
   gap: 10px;
   align-items: center;
   padding-bottom: 2em;
-  border-bottom: 2px solid var(--secondary-bg-color);
+  border-bottom: 1px solid var(--secondary-bg-color);
 }
 
 .view-header h2 {
@@ -217,4 +221,54 @@ h4 {
 
 .view-header > button:last-child:hover {
   background-color: var(--delete-color);
+}
+
+/* main content task container and task style */
+.project-view_tasks-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: 300px;
+  grid-auto-rows: 300px;
+  gap: 1em;
+  padding: 2em 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.project-view_tasks-container::-webkit-scrollbar {
+  display: none;
+}
+
+.project-view_task-card {
+  padding: 1em;
+  border-radius: 0.5em;
+  border: 1px solid var(--secondary-bg-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.project-view_task-card > p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 1fr;
+  flex: 1;
+  opacity: 0.8;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.project-view_task-card > hr {
+  border-style: none;
+  border-bottom: 1px solid var(--secondary-bg-color);
+  width: 100%;
+}
+
+.task-card_checkbox {
+  padding: 0.4em 0.5em;
+  display: flex;
+  gap: 1em;
+  border-radius: 0.3em;
+  border: 1px solid var(--secondary-bg-color);
+  align-items: center;
 }
