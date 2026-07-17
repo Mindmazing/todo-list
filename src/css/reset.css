@@ -84,3 +84,7 @@ select {
     scroll-behavior: smooth;
   }
 }
+
+button {
+  width: 100%;
+}

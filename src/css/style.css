@@ -1,9 +1,9 @@
 @font-face {
-  font-family: "Lato";
+  font-family: "Inter";
   src:
-    url("../assets/fonts/Lato-Light.woff2") format("woff2"),
-    url("../assets/fonts/Lato-Light.woff") format("woff");
-  font-weight: 300;
+    url("../assets/fonts/Inter-Regular.woff2") format("woff2"),
+    url("../assets/fonts/Inter-Regular.woff") format("woff");
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
@@ -17,3 +17,179 @@
   font-style: normal;
   font-display: swap;
 }
+
+:root {
+  --primary-bg-color: #faf7f0;
+  --secondary-bg-color: #d8d2c2;
+  --accent-color: #b17457;
+  --text-color: #4a4947;
+
+  --delete-color: rgb(196, 13, 13);
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: minmax(250px, 1fr) 4fr;
+  grid-template-rows: 100vh;
+}
+
+.main-content {
+  background-color: var(--primary-bg-color);
+}
+
+/* --------------------- START OF SIDEBAR STYLES ----------------------- */
+
+.sidebar {
+  background-color: var(--secondary-bg-color);
+  -webkit-box-shadow: 4px 0px 16px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 0px 16px 5px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+/* logo styles */
+
+.sidebar > h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.sidebar > h1 > span {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+/* sidebar-projects-container styless */
+.sidebar-projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  overflow: scroll;
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.sidebar-projects-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* sidebar-project styles*/
+.sidebar-project {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  background-color: var(--primary-bg-color);
+  border-radius: 0.3em;
+  gap: 1em;
+}
+
+.sidebar-project_name,
+.sidebar-project_add-task {
+  color: var(--text-color);
+  background-color: var(--secondary-bg-color);
+  border-radius: calc(0.5em - 0.3em);
+  padding: 0.2em 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar-project_name:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-bg-color);
+}
+
+/* sidebar-project_tasks_container */
+.sidebar-project_tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+/* sidebar-project_task */
+.sidebar-project_task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4em 0.5em;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  border-radius: calc(0.5em - 0.3em);
+}
+
+.sidebar-project_task > p {
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-project_task > button {
+  border: none;
+  background: none;
+  width: auto;
+  padding: 0;
+  transition: 0.3s;
+}
+
+.sidebar-project_task:hover {
+  background-color: var(--secondary-bg-color);
+}
+
+.sidebar-project_task > button:hover {
+  color: var(--delete-color);
+}
+
+/* project add task button */
+.sidebar-project_add-task {
+  border: none;
+  text-align: start;
+  background-color: var(--primary-bg-color);
+}
+
+.sidebar-project_add-task:hover {
+  background-color: var(--text-color);
+  color: var(--primary-bg-color);
+}
+
+/* add project button */
+
+.sidebar > button {
+  background-color: var(--accent-color);
+  padding: 0.5em;
+  border-radius: 0.3em;
+  border: none;
+  display: flex;
+  color: var(--primary-bg-color);
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.sidebar > button:hover {
+  background-color: var(--text-color);
+}
+
+/*------------------------ END OF SIDEBAR STYLES ----------------------- */
