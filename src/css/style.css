@@ -29,6 +29,19 @@
 
 button {
   cursor: pointer;
+  background-color: var(--accent-color);
+  padding: 0.5em;
+  border-radius: 0.3em;
+  border: none;
+  display: flex;
+  color: var(--primary-bg-color);
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: var(--text-color);
 }
 
 body {
@@ -50,20 +63,17 @@ h4 {
   grid-template-rows: 100vh;
 }
 
-.main-content {
-  background-color: var(--primary-bg-color);
-}
-
 /* --------------------- START OF SIDEBAR STYLES ----------------------- */
 
 .sidebar {
   background-color: var(--secondary-bg-color);
   -webkit-box-shadow: 4px 0px 16px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 4px 0px 16px 5px rgba(0, 0, 0, 0.1);
-  padding: 1em;
+  padding: 2em 1em;
   display: flex;
   flex-direction: column;
   gap: 2em;
+  z-index: 1;
 }
 
 /* logo styles */
@@ -151,6 +161,7 @@ h4 {
   background: none;
   width: auto;
   padding: 0;
+  color: var(--text-color);
   transition: 0.3s;
 }
 
@@ -174,22 +185,36 @@ h4 {
   color: var(--primary-bg-color);
 }
 
-/* add project button */
-
-.sidebar > button {
-  background-color: var(--accent-color);
-  padding: 0.5em;
-  border-radius: 0.3em;
-  border: none;
-  display: flex;
-  color: var(--primary-bg-color);
-  justify-content: space-between;
-  align-items: center;
-  transition: 0.3s;
-}
-
 .sidebar > button:hover {
   background-color: var(--text-color);
 }
 
 /*------------------------ END OF SIDEBAR STYLES ----------------------- */
+
+/* ----------------------- START OF MAIN CONTENT STYLES ----------------- */
+.main-content {
+  background-color: var(--primary-bg-color);
+  padding: 2em;
+}
+
+/* project-view */
+.view-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 2em;
+  border-bottom: 2px solid var(--secondary-bg-color);
+}
+
+.view-header h2 {
+  font-size: 2rem;
+  flex: 1;
+}
+
+.view-header > button {
+  max-width: 10em;
+}
+
+.view-header > button:last-child:hover {
+  background-color: var(--delete-color);
+}
