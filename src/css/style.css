@@ -204,7 +204,9 @@ h4 {
 
 .view-header {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: space-between;
   align-items: center;
   padding-bottom: 2em;
   border-bottom: 1px solid var(--secondary-bg-color);
@@ -212,14 +214,23 @@ h4 {
 
 .view-header h2 {
   font-size: 2rem;
-  flex: 1;
+  flex: 1 0 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
 }
 
-.view-header > button {
+.view-header > div {
+  display: flex;
+  width: 20em;
+  gap: 1em;
+}
+
+.view-header button {
   max-width: 10em;
 }
 
-.view-header > button:last-child:hover {
+.view-header button:last-child:hover {
   background-color: var(--delete-color);
 }
 
@@ -271,4 +282,12 @@ h4 {
   border-radius: 0.3em;
   border: 1px solid var(--secondary-bg-color);
   align-items: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.task-card_checkbox:hover {
+  background-color: var(--text-color);
+  color: var(--primary-bg-color);
+  border: 1px solid var(--text-color);
 }
