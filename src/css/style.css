@@ -54,6 +54,7 @@ h2,
 h3,
 h4 {
   font-family: "Inter", sans-serif;
+  line-height: 1.5;
 }
 
 .container {
@@ -203,29 +204,31 @@ h4 {
   height: 100%;
 }
 
+/* .main_project-view {
+  display: none;
+} */
+
+.main_task-view {
+  display: none;
+}
 /*------------------------------- END OF MAIN CONTENT STYLES -----------------*/
 /* ------------------------------- START OF MAIN PROJECT VIEW ----------------*/
 
-.main_project-view {
-  display: none;
-}
-
 .view-header {
   display: flex;
-  flex-wrap: wrap;
   gap: 1em;
-  justify-content: space-between;
   align-items: center;
   padding-bottom: 2em;
   border-bottom: 1px solid var(--secondary-bg-color);
+  flex-wrap: wrap;
 }
 
 .view-header h2 {
   font-size: 2rem;
-  flex: 1 0 400px;
+  min-width: 10em;
+  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-wrap: nowrap;
 }
 
 .view-header > div {
@@ -234,11 +237,7 @@ h4 {
   gap: 1em;
 }
 
-.view-header button {
-  max-width: 10em;
-}
-
-.view-header button:last-child:hover {
+.view-header_delete-button:hover {
   background-color: var(--delete-color);
 }
 
@@ -347,3 +346,20 @@ h4 {
 /* -------------------------- END OF MAIN PROJECT VIEW ------------------------ */
 
 /* -------------------------- START OF MAIN TASK VIEW ------------------------- */
+.task-view_task-detail-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  padding: 2em 0 0 0;
+}
+
+.task-view_task-detail-container > div {
+  border: 1px solid var(--secondary-bg-color);
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+.task-detail_task-description {
+  grid-row: 1 / 3;
+}
