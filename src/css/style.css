@@ -196,10 +196,18 @@ h4 {
 }
 
 /* project-view */
-.main_project-view {
+.main_project-view,
+.main_task-view {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+/*------------------------------- END OF MAIN CONTENT STYLES -----------------*/
+/* ------------------------------- START OF MAIN PROJECT VIEW ----------------*/
+
+.main_project-view {
+  display: none;
 }
 
 .view-header {
