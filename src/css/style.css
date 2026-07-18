@@ -290,4 +290,52 @@ h4 {
   background-color: var(--text-color);
   color: var(--primary-bg-color);
   border: 1px solid var(--text-color);
+  text-decoration: line-through;
 }
+
+.task-card_checkbox_checked-state {
+  background-color: var(--text-color);
+  color: var(--primary-bg-color);
+  border: 1px solid var(--text-color);
+  text-decoration: line-through;
+}
+
+.task-card_checkbox input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--primary-bg-color);
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.2em;
+  height: 1.2em;
+  border: 1px solid var(--secondary-bg-color);
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: inline-grid;
+  place-content: center;
+}
+
+/* 1. Define the checkmark shape (Hidden by default) */
+.task-card_checkbox input[type="checkbox"]::before {
+  content: "";
+  width: 0.6em;
+  height: 0.35em;
+  border-left: 0.15em solid var(--text-color); /* Uses current text/icon color */
+  border-bottom: 0.15em solid var(--text-color);
+  transform: rotate(-45deg) scale(0); /* Shrunk to 0 to hide it */
+  transform-origin: center;
+  transition: transform 0.1s ease-in-out; /* Smooth pop-in animation */
+  margin-top: -0.1em; /* Tiny optical alignment tweak */
+}
+
+/* 2. Reveal the checkmark when checked */
+.task-card_checkbox input[type="checkbox"]:checked::before {
+  transform: rotate(-45deg) scale(1); /* Scales up to visible size */
+}
+
+/* -------------------------- END OF MAIN PROJECT VIEW ------------------------ */
+
+/* -------------------------- START OF MAIN TASK VIEW ------------------------- */
