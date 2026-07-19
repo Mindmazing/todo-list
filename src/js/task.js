@@ -2,11 +2,11 @@ export class Task {
   #checked = false;
   #taskId = crypto.randomUUID();
 
-  constructor(title, description, dueDate, priority, project) {
+  constructor(title, description, dueDate, priority, projectId) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
-    this.project = project;
+    this.projectId = projectId;
     this.priority = priority;
   }
 
