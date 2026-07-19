@@ -7,9 +7,8 @@ import { UserInterface } from "./js/userInterface.js";
 import { User } from "./js/user.js";
 
 const mainScript = (() => {
-  User.loadData;
-  User.addProject("Triathlon Planning");
-  User.saveData;
+  User.loadData();
+  User.saveData();
   for (let project of User.getProjects()) {
     UserInterface.addProjectToSidebar(project);
   }

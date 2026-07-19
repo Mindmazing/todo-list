@@ -2,7 +2,7 @@ import { Project } from "./project.js";
 
 export const User = (() => {
   //initialize with default tasks.
-  const projects = [new Project("My Tasks")];
+  let projects = [new Project("My Tasks")];
 
   const addProject = (project) => {
     projects.push(new Project(project));
@@ -24,7 +24,12 @@ export const User = (() => {
 
   const loadData = () => {
     const userProfile = localStorage.getItem("user_profile");
-    projects = JSON.parse(userProfile);
+    const projectsData = JSON.parse(userProfile);
+    if (!projectsData) {
+      console.log("no data to load");
+      return 1;
+    }
+    projects = projectsData;
   };
 
   const saveData = () => {
