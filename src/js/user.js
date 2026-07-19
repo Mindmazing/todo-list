@@ -22,9 +22,20 @@ export const User = (() => {
     return projects;
   };
 
+  const loadData = () => {
+    const userProfile = localStorage.getItem("user_profile");
+    projects = JSON.parse(userProfile);
+  };
+
+  const saveData = () => {
+    localStorage.setItem("user_profile", JSON.stringify(projects));
+  };
+
   return {
     addProject,
     addTask,
     getProjects,
+    loadData,
+    saveData,
   };
 })();
