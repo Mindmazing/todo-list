@@ -1,8 +1,11 @@
-export function User() {
-  const projects = [];
+import { Project } from "./project.js";
+
+export const User = (() => {
+  //initialize with default tasks.
+  const projects = [new Project("My Tasks")];
 
   const addProject = (project) => {
-    projects.push(project);
+    projects.push(new Project(project));
   };
 
   const addTask = (projectId, task) => {
@@ -24,4 +27,4 @@ export function User() {
     addTask,
     getProjects,
   };
-}
+})();

@@ -1,30 +1,20 @@
-export function UserInterface() {
+export const UserInterface = (() => {
+  // Document Objects
   const mainProjectTitle = document.querySelector(
     ".main_project-view .view-header h2",
   );
   const mainProjectTasksContainer = document.querySelector(
     ".project-view_tasks-container",
   );
+  const sidebarProjectsContainer = document.querySelector(
+    ".sidebar-projects-container",
+  );
 
-  const setProjectTitle = (title) => {
-    mainProjectTitle.textContent = title;
-  };
-
-  const addTaskToProject = (taskCard) => {
-    mainProjectTasksContainer.appendChild(taskCard);
-  };
-
-  return {
-    setProjectTitle,
-    addTaskToProject,
-  };
-}
-
-export function createProyectSidebarCard(project) {
-  const projectSideBarCard = document.createElement("div");
-  projectSideBarCard.setAttribute("data-project-id", project.projectId);
-  projectSideBarCard.classList.add("sidebar-project");
-  projectSideBarCard.innerHTML = `
+  function createProyectSidebarCard(project) {
+    const projectSideBarCard = document.createElement("div");
+    projectSideBarCard.setAttribute("data-project-id", project.projectId);
+    projectSideBarCard.classList.add("sidebar-project");
+    projectSideBarCard.innerHTML = `
          <div class="sidebar-project_name">
               <span>${project.projectName}</span>
               <svg
@@ -62,7 +52,46 @@ export function createProyectSidebarCard(project) {
               </svg>
             </button>
   `;
-}
+    return projectSideBarCard;
+  }
+
+  function createTaskCard(task) {
+    let taskCard = document.createElement("div");
+    taskCard.setAttribute("data-task-id", task.taskId);
+    taskCard.classList.add("project-view_task-card");
+    taskCard.innerHTML = `
+              <h3>${task.title}</h3>
+              <hr />
+              <p>
+                ${task.description}
+              </p>
+              <hr />
+              <div class="task-card_checkbox">
+                <input type="checkbox" value="task-completed" />
+                <p>In Progress</p>
+              </div>
+  `;
+    return taskCard;
+  }
+
+  const setProjectTitle = (title) => {
+    mainProjectTitle.textContent = title;
+  };
+
+  const addTaskToProject = (task) => {
+    mainProjectTasksContainer.appendChild(createTaskCard(task));
+  };
+
+  const addProjectToSidebar = (project) => {
+    sidebarProjectsContainer.appendChild(createProyectSidebarCard(project));
+  };
+
+  return {
+    setProjectTitle,
+    addTaskToProject,
+    addProjectToSidebar,
+  };
+})();
 
 export function createTaskCard(task) {
   let taskCard = document.createElement("div");
