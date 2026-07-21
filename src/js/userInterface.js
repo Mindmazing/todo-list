@@ -92,7 +92,7 @@ export const UserInterface = (() => {
     sidebarTaskCard.classList.add("sidebar-project_task");
     sidebarTaskCard.setAttribute("data-task-id", task.taskId);
     sidebarTaskCard.innerHTML = `
-                <p>This is a Task ${task.title}</p>
+                <p>${task.title}</p>
                 <button>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

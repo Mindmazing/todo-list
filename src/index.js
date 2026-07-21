@@ -95,4 +95,9 @@ const main = (() => {
     //close pop up
     UserInterface.hideTaskFormPopUp();
   });
+  addTaskForm
+    .querySelector(`button[type="button"]`)
+    .addEventListener("click", () => {
+      UserInterface.hideTaskFormPopUp();
+    });
 })();
