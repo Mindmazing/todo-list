@@ -8,7 +8,6 @@ export class Task {
     this.taskId = crypto.randomUUID();
     this.checked = false;
   }
-
   isChecked() {
     return this.checked;
   }

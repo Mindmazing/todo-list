@@ -9,6 +9,7 @@ export const UserInterface = (() => {
   const sidebarProjectsContainer = document.querySelector(
     ".sidebar-projects-container",
   );
+  const mainProjectView = document.querySelector(".main_project-view");
 
   function createProyectSidebarCard(project) {
     const projectSideBarCard = document.createElement("div");
@@ -79,7 +80,7 @@ export const UserInterface = (() => {
   };
 
   const addTaskToProject = (task) => {
-    mainProjectTasksContainer.appendChild(createTaskCard(task));
+    mainProjectTasksContainer.prepend(createTaskCard(task));
   };
 
   const addProjectToSidebar = (project) => {
@@ -112,6 +113,15 @@ export const UserInterface = (() => {
     return sidebarTaskCard;
   };
 
+  const showProjectOnMain = (project) => {
+    setProjectTitle(project.projectName);
+    mainProjectView.setAttribute("data-project-id", project.projectId);
+    // adding tasks to main view of project selected
+    project.tasks.forEach((task) => {
+      UserInterface.addTaskToProject(task);
+    });
+  };
+
   const addTaskToSidebarProject = (task) => {
     let sidebarProjectTasksContainer = sidebarProjectsContainer.querySelector(
       `[data-project-id="${task.projectId}"] .sidebar-project_tasks-container`,
@@ -127,12 +137,22 @@ export const UserInterface = (() => {
   const hideProjectFormPopUp = () => {
     projectFormPopUp.style.display = "none";
   };
+
+  const taskFormPopUp = document.querySelector(".task-creator-modal");
+  const showTaskFormPopUp = () => {
+    taskFormPopUp.style.display = "flex";
+  };
+  const hideTaskFormPopUp = () => {
+    taskFormPopUp.style.display = "none";
+  };
   return {
-    setProjectTitle,
     addTaskToProject,
     addProjectToSidebar,
     showProjectFormPopUp,
     hideProjectFormPopUp,
     addTaskToSidebarProject,
+    showProjectOnMain,
+    showTaskFormPopUp,
+    hideTaskFormPopUp,
   };
 })();

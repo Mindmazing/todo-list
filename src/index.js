@@ -11,13 +11,25 @@ const main = (() => {
   User.loadData();
 
   // load data to website
-  for (let project of User.getProjects()) {
-    //load projects to sidebar
-    UserInterface.addProjectToSidebar(project);
-    for (let task of project.tasks) {
-      UserInterface.addTaskToSidebarProject(task);
+  function reloadSideBar() {
+    for (let project of User.getProjects()) {
+      //load projects to sidebar
+      UserInterface.addProjectToSidebar(project);
+      for (let task of project.tasks) {
+        if (task.isChecked()) continue;
+        UserInterface.addTaskToSidebarProject(task);
+      }
     }
   }
+  reloadSideBar();
+
+  // load the default tasks view
+  function loadProjectMainView(projectId) {
+    // get project
+    const project = User.findProject(projectId);
+    UserInterface.showProjectOnMain(project);
+  }
+  loadProjectMainView("0000-0000-0000-0000");
 
   // event listeners for sidebar
   const sidebarAddProjectBtn = document.querySelector(".sidebar > button");
@@ -47,23 +59,40 @@ const main = (() => {
   const sidebarProjectsContainer = document.querySelector(
     ".sidebar-projects-container",
   );
+  const mainProjectView = document.querySelector(".main_project-view");
+
+  let selectedProjectId = "";
   sidebarProjectsContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".sidebar-project_add-task")) return 1;
     // get project id
-    const projectId =
+    selectedProjectId =
       event.target.parentElement.getAttribute("data-project-id");
-    // TEST: SETTING A TASK TO A PROJECT
+    UserInterface.showTaskFormPopUp();
+  });
+
+  const addTaskForm = document.querySelector(".task-creator-modal form");
+  addTaskForm.addEventListener("submit", (event) => {
+    // get project submitted name save it to user and local storage and add to sidebar
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const taskData = Object.fromEntries(formData);
     const newTask = new Task(
-      "Test Task",
-      "This is my test task",
-      "12/12/12",
-      "HIGH",
-      projectId,
+      taskData["task-title"],
+      taskData["task-description"],
+      taskData["task-duedate"],
+      taskData["task-priority"],
+      selectedProjectId,
     );
     // add task to user
     User.addTaskToProject(newTask);
     UserInterface.addTaskToSidebarProject(newTask);
+    // add task to project main view if main view on focus
+    if (selectedProjectId === mainProjectView.getAttribute("data-project-id")) {
+      UserInterface.addTaskToProject(newTask);
+    }
     // save JSON
     User.saveData();
+    //close pop up
+    UserInterface.hideTaskFormPopUp();
   });
 })();

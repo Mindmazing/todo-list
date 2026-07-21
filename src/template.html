@@ -10,7 +10,7 @@
       <div class="sidebar">
         <h1>get<span>it</span>done</h1>
         <div class="sidebar-projects-container">
-          <div class="sidebar-project">
+          <!-- <div class="sidebar-project">
             <div class="sidebar-project_name">
               <span>All Tasks</span>
               <svg
@@ -66,7 +66,7 @@
                 />
               </svg>
             </button>
-          </div>
+          </div> -->
         </div>
         <button>
           Add Project
@@ -87,7 +87,7 @@
         </button>
       </div>
       <div class="main-content">
-        <div class="main_project-view">
+        <div class="main_project-view" data-project-id="">
           <div class="view-header">
             <h2>This is The Project's Title</h2>
             <div>
@@ -128,7 +128,7 @@
             </div>
           </div>
           <div class="project-view_tasks-container">
-            <div class="project-view_task-card">
+            <!-- <div class="project-view_task-card">
               <h3>This is the Task Title</h3>
               <hr />
               <p>
@@ -163,7 +163,7 @@
                 <input type="checkbox" value="task-completed" />
                 <p>In Progress</p>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="main_task-view">
@@ -235,6 +235,26 @@
                 placeholder="Task description"
                 required
               />
+            </div>
+          </div>
+          <div class="creator-modal_form-row">
+            <div>
+              <label for="task-duedate">Task Due Date:</label>
+              <input
+                type="date"
+                name="task-duedate"
+                id="task-duedate"
+                required
+              />
+            </div>
+            <div>
+              <label for="task-description">Task Priority</label>
+              <select name="task-priority" id="task-priority" required>
+                <option value="" disabled selected>Select Task Priority</option>
+                <option value="HIGH">High</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="LOW">Low</option>
+              </select>
             </div>
           </div>
           <div class="creator-modal_form-row">

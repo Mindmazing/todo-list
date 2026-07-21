@@ -424,7 +424,8 @@ h4 {
 .creator-modal_form-row label {
   opacity: 0.8;
 }
-.creator-modal_form-row input {
+.creator-modal_form-row input,
+.creator-modal_form-row select {
   padding: 0.5em;
   border: 1px solid var(--text-color);
   border-radius: 0.3em;
@@ -437,7 +438,8 @@ h4 {
   color: var(--accent-color);
 }
 
-.creator-modal_form-row input:focus {
+.creator-modal_form-row input:focus,
+.creator-modal_form-row select:focus {
   outline: none;
 
   border: 1px solid var(--accent-color);

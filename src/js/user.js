@@ -4,6 +4,8 @@ import { Task } from "./task.js";
 export const User = (() => {
   //initialize with default tasks.
   let projects = [new Project("My Tasks")];
+  // initializing my tasks project with an accessible ID
+  projects[0].projectId = "0000-0000-0000-0000";
 
   const addProject = (projectName) => {
     projects.push(new Project(projectName));
@@ -57,11 +59,20 @@ export const User = (() => {
     console.log(localStorage.getItem("user_profile"));
   };
 
+  const findProject = (projectId) => {
+    for (let project of projects) {
+      if (project.projectId === projectId) {
+        return project;
+      }
+    }
+  };
+
   return {
     addProject,
     addTaskToProject,
     getProjects,
     loadData,
     saveData,
+    findProject,
   };
 })();
