@@ -100,4 +100,22 @@ const main = (() => {
     .addEventListener("click", () => {
       UserInterface.hideTaskFormPopUp();
     });
+
+  // add event listener to select project to view in main window
+  sidebarProjectsContainer.addEventListener(
+    "click",
+    (event) => {
+      if (
+        !event.target.parentElement.matches(".sidebar-project_name") &&
+        !event.target.matches(".sidebar-project_name")
+      )
+        return 1;
+      // get project id
+      const projectId = event.target
+        .closest(".sidebar-project")
+        .getAttribute("data-project-id");
+      loadProjectMainView(projectId);
+    },
+    true,
+  );
 })();

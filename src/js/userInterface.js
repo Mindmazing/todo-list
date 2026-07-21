@@ -116,6 +116,8 @@ export const UserInterface = (() => {
   const showProjectOnMain = (project) => {
     setProjectTitle(project.projectName);
     mainProjectView.setAttribute("data-project-id", project.projectId);
+    mainProjectView.querySelector(".project-view_tasks-container").innerHTML =
+      null;
     // adding tasks to main view of project selected
     project.tasks.forEach((task) => {
       UserInterface.addTaskToProject(task);

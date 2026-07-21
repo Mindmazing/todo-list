@@ -157,7 +157,7 @@ h4 {
 }
 
 .sidebar-project_task > p {
-  width: 80%;
+  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
