@@ -12,7 +12,7 @@ export const UserInterface = (() => {
 
   function createProyectSidebarCard(project) {
     const projectSideBarCard = document.createElement("div");
-    projectSideBarCard.setAttribute("data-project-id", project.projectId);
+    projectSideBarCard.setAttribute("data-project-id", `${project.projectId}`);
     projectSideBarCard.classList.add("sidebar-project");
     projectSideBarCard.innerHTML = `
          <div class="sidebar-project_name">
@@ -118,9 +118,18 @@ export const UserInterface = (() => {
     sidebarProjectTasksContainer.appendChild(createSidebarTaskCard(task));
   };
 
+  const projectFormPopUp = document.querySelector(".project-creator-modal");
+  const showProjectFormPopUp = () => {
+    projectFormPopUp.style.display = "flex";
+  };
+  const hideProjectFormPopUp = () => {
+    projectFormPopUp.style.display = "none";
+  };
   return {
     setProjectTitle,
     addTaskToProject,
     addProjectToSidebar,
+    showProjectFormPopUp,
+    hideProjectFormPopUp,
   };
 })();

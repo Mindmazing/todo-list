@@ -125,6 +125,13 @@ h4 {
   transition: 0.3s;
 }
 
+.sidebar-project_name span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+}
+
 .sidebar-project_name:hover {
   background-color: var(--accent-color);
   color: var(--primary-bg-color);
@@ -440,3 +447,6 @@ h4 {
 }
 
 /* ----------------------- START STYLES PROYECT CREATOR MODAL ---------------------------- */
+.project-creator-modal {
+  display: none;
+}

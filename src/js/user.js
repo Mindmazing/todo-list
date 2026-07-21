@@ -4,8 +4,8 @@ export const User = (() => {
   //initialize with default tasks.
   let projects = [new Project("My Tasks")];
 
-  const addProject = (project) => {
-    projects.push(new Project(project));
+  const addProject = (projectName) => {
+    projects.push(new Project(projectName));
   };
 
   const addTaskToProject = (projectId, task) => {
