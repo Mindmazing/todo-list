@@ -9,7 +9,16 @@ import { User } from "./js/user.js";
 const mainScript = (() => {
   User.loadData();
   User.saveData();
+
+  // load data to website
   for (let project of User.getProjects()) {
     UserInterface.addProjectToSidebar(project);
+    console.log(project.projectId);
   }
+
+  // event listeners for sidebar
+  const sidebarAddProjectBtn = document.querySelector(".sidebar > button");
+  sidebarAddProjectBtn.addEventListener("click", (event) => {
+    console.log("Clicked add new button");
+  });
 })();

@@ -8,7 +8,7 @@ export const User = (() => {
     projects.push(new Project(project));
   };
 
-  const addTask = (projectId, task) => {
+  const addTaskToProject = (projectId, task) => {
     // search for project with Id
     for (let project of projects) {
       if (project.projectId === projectId) {
@@ -38,7 +38,7 @@ export const User = (() => {
 
   return {
     addProject,
-    addTask,
+    addTaskToProject,
     getProjects,
     loadData,
     saveData,
