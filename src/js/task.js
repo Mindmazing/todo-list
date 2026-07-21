@@ -1,13 +1,12 @@
 export class Task {
-  #checked = false;
-  #taskId = crypto.randomUUID();
-
   constructor(title, description, dueDate, priority, projectId) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.projectId = projectId;
     this.priority = priority;
+    this.taskId = crypto.randomUUID();
+    this.checked = false;
   }
 
   isChecked() {
@@ -15,10 +14,6 @@ export class Task {
   }
 
   check() {
-    this.#checked = true;
-  }
-
-  get taskId() {
-    return this.taskId;
+    this.checked = true;
   }
 }

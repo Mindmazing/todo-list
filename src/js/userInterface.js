@@ -109,12 +109,14 @@ export const UserInterface = (() => {
                   </svg>
                 </button>
     `;
+    return sidebarTaskCard;
   };
 
-  const addTaskToSidebarProject = (projectId, task) => {
+  const addTaskToSidebarProject = (task) => {
     let sidebarProjectTasksContainer = sidebarProjectsContainer.querySelector(
-      `[data-proyect-id="${projectId}"] .sidebar-project_tasks-container`,
+      `[data-project-id="${task.projectId}"] .sidebar-project_tasks-container`,
     );
+    console.log(sidebarProjectTasksContainer);
     sidebarProjectTasksContainer.appendChild(createSidebarTaskCard(task));
   };
 
@@ -131,5 +133,6 @@ export const UserInterface = (() => {
     addProjectToSidebar,
     showProjectFormPopUp,
     hideProjectFormPopUp,
+    addTaskToSidebarProject,
   };
 })();
