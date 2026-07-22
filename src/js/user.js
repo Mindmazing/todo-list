@@ -67,6 +67,15 @@ export const User = (() => {
     }
   };
 
+  const findTask = (projectId, taskId) => {
+    let currentProject = findProject(projectId);
+    for (let task of currentProject.tasks) {
+      if (task.taskId === taskId) {
+        return task;
+      }
+    }
+  };
+
   return {
     addProject,
     addTaskToProject,
@@ -74,5 +83,6 @@ export const User = (() => {
     loadData,
     saveData,
     findProject,
+    findTask,
   };
 })();

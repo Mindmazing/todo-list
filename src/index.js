@@ -12,6 +12,10 @@ const main = (() => {
 
   // load data to website
   function reloadSideBar() {
+    const sidebarProyects = document.querySelector(
+      ".sidebar-projects-container",
+    );
+    sidebarProyects.innerHTML = null;
     for (let project of User.getProjects()) {
       //load projects to sidebar
       UserInterface.addProjectToSidebar(project);
@@ -131,5 +135,31 @@ const main = (() => {
     UserInterface.showTaskFormPopUp();
   });
 
-  // add event listener
+  // add event listener to check task
+  const projectViewTasksContainer = document.querySelector(
+    ".project-view_tasks-container",
+  );
+  projectViewTasksContainer.addEventListener("click", (event) => {
+    const taskCheckbox = event.target.closest(".task-card_checkbox");
+    if (!taskCheckbox) return 1;
+    const taskId = taskCheckbox.parentElement.getAttribute("data-task-id");
+    const projectId = taskCheckbox
+      .closest(".main_project-view")
+      .getAttribute("data-project-id");
+    const taskSelected = User.findTask(projectId, taskId);
+    // set dom to checked status
+    if (taskCheckbox.classList.contains("task-card_checkbox_checked-state")) {
+      taskCheckbox.classList.remove("task-card_checkbox_checked-state");
+      // remove check from card
+      taskCheckbox.querySelector("input").checked = false;
+      taskSelected.unCheck();
+    } else {
+      taskCheckbox.classList.add("task-card_checkbox_checked-state");
+      taskCheckbox.querySelector("input").checked = true;
+      taskSelected.check();
+    }
+    // save check movements
+    reloadSideBar();
+    User.saveData();
+  });
 })();

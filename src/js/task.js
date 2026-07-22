@@ -15,4 +15,8 @@ export class Task {
   check() {
     this.checked = true;
   }
+
+  unCheck() {
+    this.checked = false;
+  }
 }

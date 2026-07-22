@@ -72,6 +72,12 @@ export const UserInterface = (() => {
                 <p>In Progress</p>
               </div>
   `;
+    console.log(task.isChecked());
+    const taskCheckbox = taskCard.querySelector(".task-card_checkbox");
+    if (task.isChecked()) {
+      taskCheckbox.classList.add("task-card_checkbox_checked-state");
+      taskCheckbox.querySelector("input").checked = true;
+    }
     return taskCard;
   }
 
