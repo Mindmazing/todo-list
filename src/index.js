@@ -98,6 +98,11 @@ const main = (() => {
     User.saveData();
     //close pop up
     UserInterface.hideTaskFormPopUp();
+    // clear fields
+    addTaskForm.querySelectorAll("input").forEach((element) => {
+      element.value = "";
+    });
+    addTaskForm.querySelector("option").selected = "selected";
   });
   addTaskForm
     .querySelector(`button[type="button"]`)
