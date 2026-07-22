@@ -67,13 +67,17 @@ const main = (() => {
     User.saveData();
     // default select the project
     loadProjectMainView(User.getProjects().at(-1).projectId);
+
+    addProjectForm.querySelector("input").value = "";
   });
   // cancel operation in cancel button is clicked
   addProjectForm
     .querySelector(`button[type="button"]`)
     .addEventListener("click", () => {
       UserInterface.hideProjectFormPopUp();
+      addProjectForm.querySelector("input").value = "";
     });
+
   // detect when add task button is pressed for any of the projects in sidebar
 
   let selectedProjectId = "";
@@ -119,6 +123,9 @@ const main = (() => {
     .querySelector(`button[type="button"]`)
     .addEventListener("click", () => {
       UserInterface.hideTaskFormPopUp();
+      addTaskForm.querySelectorAll("input").forEach((element) => {
+        element.value = "";
+      });
     });
 
   // add event listener to select project to view in main window
