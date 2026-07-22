@@ -118,4 +118,18 @@ const main = (() => {
     },
     true,
   );
+
+  // add event listener to projects main view buttons
+  const mainProjectViewAddBtn = document.querySelector(
+    ".main_project-view .view-header_edit-button",
+  );
+  mainProjectViewAddBtn.addEventListener("click", (event) => {
+    // get project Id
+    selectedProjectId = event.target
+      .closest(".main_project-view")
+      .getAttribute("data-project-id");
+    UserInterface.showTaskFormPopUp();
+  });
+
+  // add event listener
 })();
