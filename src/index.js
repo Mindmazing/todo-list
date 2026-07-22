@@ -65,6 +65,8 @@ const main = (() => {
     UserInterface.addProjectToSidebar(User.getProjects().at(-1));
     UserInterface.hideProjectFormPopUp();
     User.saveData();
+    // default select the project
+    loadProjectMainView(User.getProjects().at(-1).projectId);
   });
   // cancel operation in cancel button is clicked
   addProjectForm
