@@ -11,6 +11,14 @@ const main = (() => {
   User.loadData();
 
   // load data to website
+
+  const sidebarProjectsContainer = document.querySelector(
+    ".sidebar-projects-container",
+  );
+  const mainProjectView = document.querySelector(".main_project-view");
+  const mainProjectViewDeleteBtn = mainProjectView.querySelector(
+    ".view-header_delete-button",
+  );
   function reloadSideBar() {
     const sidebarProyects = document.querySelector(
       ".sidebar-projects-container",
@@ -30,10 +38,15 @@ const main = (() => {
   // load the default tasks view
   function loadProjectMainView(projectId) {
     // get project
+    if (projectId === User.getProjects()[0].projectId) {
+      mainProjectViewDeleteBtn.disabled = true;
+    } else {
+      mainProjectViewDeleteBtn.disabled = false;
+    }
     const project = User.findProject(projectId);
     UserInterface.showProjectOnMain(project);
   }
-  loadProjectMainView("0000-0000-0000-0000");
+  loadProjectMainView(User.getProjects()[0].projectId);
 
   // event listeners for sidebar
   const sidebarAddProjectBtn = document.querySelector(".sidebar > button");
@@ -60,10 +73,6 @@ const main = (() => {
       UserInterface.hideProjectFormPopUp();
     });
   // detect when add task button is pressed for any of the projects in sidebar
-  const sidebarProjectsContainer = document.querySelector(
-    ".sidebar-projects-container",
-  );
-  const mainProjectView = document.querySelector(".main_project-view");
 
   let selectedProjectId = "";
   sidebarProjectsContainer.addEventListener("click", (event) => {
@@ -197,5 +206,26 @@ const main = (() => {
       .closest(".sidebar-project_task")
       .getAttribute("data-task-id");
     deleteTask(projectId, taskId);
+  });
+
+  // delete project
+  function deleteProject(projectId) {
+    const proyectIndex = User.getProjects().findIndex(
+      (project) => project.projectId === projectId,
+    );
+    User.getProjects().splice(proyectIndex, 1);
+  }
+
+  mainProjectViewDeleteBtn.addEventListener("click", (event) => {
+    const projectId = event.target
+      .closest(".main_project-view")
+      .getAttribute("data-project-id");
+    deleteProject(projectId);
+
+    // reload sidebar and go to default project
+    reloadSideBar();
+    loadProjectMainView(User.getProjects()[0].projectId);
+
+    User.saveData();
   });
 })();

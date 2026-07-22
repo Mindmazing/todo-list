@@ -249,6 +249,13 @@ h4 {
   background-color: var(--delete-color);
 }
 
+.view-header_delete-button:disabled {
+  opacity: 0.5;
+}
+.view-header_delete-button:disabled:hover {
+  background-color: var(--accent-color);
+}
+
 /* main content task container and task style */
 .project-view_tasks-container {
   display: grid;
