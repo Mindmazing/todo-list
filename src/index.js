@@ -162,4 +162,35 @@ const main = (() => {
     reloadSideBar();
     User.saveData();
   });
+
+  // working in the ultimate delete task
+  function deleteTask(projectId, taskId) {
+    // find project and task
+    const selectedProject = User.findProject(projectId);
+    const taskIndex = selectedProject.tasks.findIndex(
+      (task) => task.taskId === taskId,
+    );
+    console.log(taskIndex);
+    selectedProject.tasks.splice(taskIndex, 1);
+
+    reloadSideBar();
+    const currentMainProjectViewId =
+      mainProjectView.getAttribute("data-project-id");
+    if (currentMainProjectViewId === projectId) {
+      loadProjectMainView(currentMainProjectViewId);
+    }
+    User.saveData();
+  }
+
+  // delete task button event listener on sidebar
+  sidebarProjectsContainer.addEventListener("click", (event) => {
+    if (!event.target.closest(".sidebar-project_delete-task-btn")) return 1;
+    const projectId = event.target
+      .closest(".sidebar-project")
+      .getAttribute("data-project-id");
+    const taskId = event.target
+      .closest(".sidebar-project_task")
+      .getAttribute("data-task-id");
+    deleteTask(projectId, taskId);
+  });
 })();

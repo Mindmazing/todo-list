@@ -107,7 +107,7 @@ export const UserInterface = (() => {
     sidebarTaskCard.setAttribute("data-task-id", task.taskId);
     sidebarTaskCard.innerHTML = `
                 <p>${task.title}</p>
-                <button>
+                <button class="sidebar-project_delete-task-btn">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="22"
