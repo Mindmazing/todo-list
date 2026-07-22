@@ -61,7 +61,15 @@ export const UserInterface = (() => {
     taskCard.setAttribute("data-task-id", task.taskId);
     taskCard.classList.add("project-view_task-card");
     taskCard.innerHTML = `
-              <h3>${task.title}</h3>
+              <div>
+                <div>
+                  <h3>${task.title}</h3>
+                  <div class="task-priority ${task.priority.toLowerCase()}-priority">
+                    ${task.priority.toLowerCase()}
+                  </div>
+                </div>
+                 <span>${task.dueDate}</span>
+              </div>
               <hr />
               <p>
                 ${task.description}

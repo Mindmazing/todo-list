@@ -274,6 +274,34 @@ h4 {
   gap: 0.5em;
 }
 
+.project-view_task-card > div:first-child > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-view_task-card > div:first-child > span {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.project-view_task-card .task-priority {
+  padding: 0.2em 1em;
+  font-size: 0.7rem;
+  border: 2px solid var(--_priority-color, var(--accent-color));
+  color: var(--_priority-color, var(--accent-color));
+  border-radius: 0.3em;
+  font-weight: bold;
+}
+
+.high-priority {
+  --_priority-color: var(--delete-color);
+}
+
+.low-priority {
+  --_priority-color: var(--text-color);
+}
+
 .project-view_task-card > p {
   overflow: hidden;
   text-overflow: ellipsis;
