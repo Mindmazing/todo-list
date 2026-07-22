@@ -1,7 +1,5 @@
 # todo-list
 
-# todo-list
-
 ## Overview
 
 "Get It Done" is a web app created to work just like a todo list. You can add projects, tasks, delete projects and delete tasks.
